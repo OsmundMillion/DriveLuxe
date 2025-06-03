@@ -11,7 +11,7 @@ const SignIn = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login logic
+    // Simulate login
     if (form.username === "john_doe" && form.password === "123456") {
       localStorage.setItem("user", JSON.stringify({ username: form.username }));
       navigate("/cars");
@@ -22,20 +22,19 @@ const SignIn = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-midnight to-[#0B111D] flex items-center justify-center overflow-hidden">
-      {/* background image layer */}
+      {/* Slightly lighter background image overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-50"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1740&q=80')",
         }}
       />
+      {/* Lighter dark overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
-
-      {/* Glassmorphic form container */}
-      <div className="relative z-10 w-full max-w-md p-8 bg-white/5 backdrop-blur-md border border-slateGray/50 rounded-3xl shadow-2xl">
+      {/* Glassmorphic form container with a bit more opacity */}
+      <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md border border-slateGray/40 rounded-3xl shadow-xl">
         {/* Logo & Tagline */}
         <div className="text-center mb-6">
           <h1 className="text-3xl font-heading text-champagne">DriveLuxe</h1>
@@ -43,7 +42,7 @@ const SignIn = () => {
         </div>
 
         {/* Welcome text */}
-        <h2 className="text-xl font-semibold mb-6 text-pearlWhite text-center">
+        <h2 className="text-xl font-semibold mb-4 text-pearlWhite text-center">
           Welcome back, ready to roll?
         </h2>
 
@@ -61,7 +60,7 @@ const SignIn = () => {
               value={form.username}
               onChange={handleChange}
               placeholder="e.g. john_doe"
-              className="w-full px-4 py-2 bg-[#1A1F2E] border border-slateGray rounded-lg text-pearlWhite placeholder-slateGray focus:outline-none focus:ring-2 focus:ring-luxeGold transition"
+              className="w-full px-4 py-2 bg-[#222A36] border border-slateGray rounded-lg text-pearlWhite placeholder-slateGray focus:outline-none focus:ring-2 focus:ring-luxeGold transition"
               required
             />
           </div>
@@ -78,7 +77,7 @@ const SignIn = () => {
               value={form.password}
               onChange={handleChange}
               placeholder="••••••••"
-              className="w-full px-4 py-2 bg-[#1A1F2E] border border-slateGray rounded-lg text-pearlWhite placeholder-slateGray focus:outline-none focus:ring-2 focus:ring-luxeGold transition"
+              className="w-full px-4 py-2 bg-[#222A36] border border-slateGray rounded-lg text-pearlWhite placeholder-slateGray focus:outline-none focus:ring-2 focus:ring-luxeGold transition"
               required
             />
           </div>
