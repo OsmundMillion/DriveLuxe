@@ -2,10 +2,12 @@
 
 :root {
   --color-midnight: #1b1b1b;
+  --color-pink: #FF69B4;
   --color-champagne: #F5E9CF;
   --color-luxeGold: #C6A15C;
   --color-pearlWhite: #FFFFFF;
   --color-slateGray: #6B7280;
+  --color-mintCream: #F1FFFA;
 
 --font-heading: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -17,6 +19,38 @@
 .text-champagne {
   color: var(--color-champagne);
 }
+.text-mintCream {
+  color: var(--color-mintCream);
+}
+.text-pink {
+  color: var(--color-pink);
+}
+.text-luxeGold {
+  color: var(--color-luxeGold);
+}
+.text-pearlWhite {
+  color: var(--color-pearlWhite);
+}
+.text-slateGray {
+  color: var(--color-slateGray);
+}
+
+.bg-champagne {
+  background-color: var(--color-champagne);
+}
+.bg-mintCream {
+  background-color: var(--color-mintCream);
+}
+.bg-luxeGold {
+  background-color: var(--color-luxeGold);
+}
+.bg-pearlWhite {
+  background-color: var(--color-pearlWhite);
+}
+.bg-slateGray {
+  background-color: var(--color-slateGray);
+}
+
 .font-heading {
   font-family: var(--font-heading);
 }

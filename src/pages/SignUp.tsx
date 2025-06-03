@@ -71,7 +71,7 @@ const SignUp = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-midnight to-[#0B111D] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1740&q=80')" }} />
+      <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1566473965997-3de9c817e938?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }} />
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md border border-slateGray/40 rounded-3xl shadow-xl">
         <div className="text-center mb-6">

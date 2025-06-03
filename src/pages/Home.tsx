@@ -1,5 +1,4 @@
-import { FaFacebook, FaYoutube, FaWhatsapp } from "react-icons/fa";
-
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -8,9 +7,30 @@ const Home = () => {
   // Featured Cars (for now, hardcoded)
   const cars = [
     { id: 1, name: "Lamborghini Huracan", price: "$500/day", image: "https://images.unsplash.com/photo-1612825173281-9a193378527e?q=80&w=2599&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 2, name: "Ferrari 488", price: "$650/day", image: "https://images.unsplash.com/photo-1533190286941-2fbb69b0c3e0?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhY2h8OXx8Y2FyJTIwcmVudGFsJTIwYnVzaW5lc3N8ZW58MHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080" },
-    { id: 3, name: "Porsche 911", price: "$400/day", image: "https://images.unsplash.com/photo-1564542044-2d2b8361b235?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhY2h8Mnx8YnVzaW5lc3N8ZW58MHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080" },
+    { id: 2, name: "Ferrari 488", price: "$650/day", image: "https://images.unsplash.com/photo-1629816816521-588e0c680056?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 3, name: "Porsche 911", price: "$400/day", image: "https://images.unsplash.com/photo-1619844175408-c05947985e2d?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   ];
+
+const [activeSet, setActiveSet] = useState(1); // To manage which set of services is visible
+
+  // Define types for the services
+  const servicesSet1 = [
+    { id: 1, name: "Corporate Car Rental", image: "https://images.pexels.com/photos/4964951/pexels-photo-4964951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"},
+    { id: 2, name: "Car Rental with Driver", image: "https://images.pexels.com/photos/9519968/pexels-photo-9519968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+    { id: 3, name: "Airport Transfer", image: "https://images.pexels.com/photos/29112731/pexels-photo-29112731/free-photo-of-luxury-car-and-private-jet-on-airport-tarmac.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+  ];
+
+  const servicesSet2 = [
+    { id: 4, name: "Self-Drive Rentals", image: "https://images.pexels.com/photos/13275527/pexels-photo-13275527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+    { id: 5, name: "Event & Wedding Car Rentals", image: "https://images.pexels.com/photos/14745476/pexels-photo-14745476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+    { id: 6, name: "Luxury Van & SUV Rentals", image: "https://images.pexels.com/photos/11139395/pexels-photo-11139395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+  ];
+
+  // Explicitly type the argument to be a number
+  const handleSetClick = (setNumber: number) => {
+    setActiveSet(setNumber);
+  };
+
 
   return (
     <div>
@@ -19,9 +39,52 @@ const Home = () => {
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10">
           <div>
-            <h1 className="text-5xl font-semibold">Drive in Luxury, Travel with Style</h1>
+            <h1 className="text-6xl font-semibold">
+              Drive in <span className="text-luxeGold">Luxury</span>, Travel with <span className="text-luxeGold">Style</span>
+            </h1>
             <p className="mt-4 text-lg">Experience the ultimate driving pleasure with our premium car rental service. Choose from our extensive fleet of luxury vehicles.</p>
-            <button className="mt-6 px-8 py-3 bg-champagne text-midnight rounded-lg hover:bg-luxeGold transition">Browse Cars</button>
+            {/* Two Buttons */}
+            <div className="mt-6 flex justify-center space-x-4">
+              <button className="px-8 py-3 bg-luxeGold text-black rounded-full hover:bg-champagne transition-all transform hover:scale-105">
+                Browse Cars
+              </button>
+              <button className="px-8 py-3 bg-mintCream text-black rounded-full hover:bg-champagne transition-all transform hover:scale-105">
+                Rent Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Features Section moved right after Hero */}
+      <section className="py-12 bg-midnight text-white">
+        <h2 className="text-3xl font-semibold text-center text-champagne mb-6">Our Services</h2>
+        
+        {/* Services Grid */}
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {(activeSet === 1 ? servicesSet1 : servicesSet2).map((service) => (
+            <div key={service.id} className="bg-[#1A1F2E] p-6 rounded-lg">
+              <img src={service.image} alt={service.name} className="w-full h-64 object-cover rounded-lg mb-4" />
+              <h3 className="text-xl font-semibold">{service.name}</h3>
+            </div>
+          ))}
+        </div>
+
+        {/* Circle Navigation */}
+        <div className="flex justify-center mt-8">
+          <div className="flex space-x-4">
+            <button
+              onClick={() => handleSetClick(1)}
+              className={`w-8 h-8 rounded-full border-2 ${activeSet === 1 ? 'bg-luxeGold' : 'bg-transparent'} border-luxeGold`}
+            >
+              1
+            </button>
+            <button
+              onClick={() => handleSetClick(2)}
+              className={`w-8 h-8 rounded-full border-2 ${activeSet === 2 ? 'bg-luxeGold' : 'bg-transparent'} border-luxeGold`}
+            >
+              2
+            </button>
           </div>
         </div>
       </section>
@@ -55,28 +118,6 @@ const Home = () => {
               <button onClick={() => navigate(`/car-detail/${car.id}`)} className="mt-4 w-full py-2 bg-champagne text-midnight rounded-lg hover:bg-luxeGold transition">Details</button>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Service Features Section */}
-      <section className="py-12 bg-[#222A36] text-white">
-        <h2 className="text-3xl font-semibold text-center text-champagne mb-6">Our Services</h2>
-        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-[#1A1F2E] p-6 rounded-lg">
-            <FaWhatsapp className="w-8 h-8 text-champagne mb-4" />
-            <h3 className="text-xl font-semibold">24/7 Support</h3>
-            <p className="text-lg">We're always available to assist you with any queries or concerns.</p>
-          </div>
-          <div className="bg-[#1A1F2E] p-6 rounded-lg">
-            <FaFacebook className="w-8 h-8 text-champagne mb-4" />
-            <h3 className="text-xl font-semibold">Free Delivery</h3>
-            <p className="text-lg">We deliver your rental car directly to your location at no extra cost.</p>
-          </div>
-          <div className="bg-[#1A1F2E] p-6 rounded-lg">
-            <FaYoutube className="w-8 h-8 text-champagne mb-4" />
-            <h3 className="text-xl font-semibold">Full Insurance</h3>
-            <p className="text-lg">Your car is fully insured, so you can drive with peace of mind.</p>
-          </div>
         </div>
       </section>
 
