@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-midnight: #0B0E14;
+  --color-champagne: #F5E9CF;
+  --color-luxeGold: #C6A15C;
+  --color-pearlWhite: #FFFFFF;
+  --color-slateGray: #6B7280;
+
+--font-heading: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+.bg-midnight {
+  background-color: var(--color-midnight);
+}
+.text-champagne {
+  color: var(--color-champagne);
+}
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-body {
+  font-family: var(--font-body);
+}
